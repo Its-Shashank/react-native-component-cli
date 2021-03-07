@@ -14,7 +14,23 @@ inquirer
     const cwd = process.cwd();
     fs.writeFileSync(
       cwd + "/" + framework + ".js",
-      `import React from 'react'; import {View, StyleSheet} from 'react-native';`
+      `
+import React from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+      
+function ${framework}() {
+  return (
+    <View style={styles.screen}>
+      <Text>Hello from ${framework}</Text>
+    </View>
+  )
+};
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1
+  }
+})
+export default ${framework};`
     );
     console.log("Done");
   });
